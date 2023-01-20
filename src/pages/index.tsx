@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -60,6 +61,17 @@ export default function Home() {
         </div>
 
         <div className={styles.grid}>
+        <Link
+            href="/login"
+            className={styles.card}
+            rel="noopener noreferrer"
+          >
+            <h2 className={inter.className}>
+              Login in <span>-&gt;</span>
+            </h2>
+            <p className={inter.className}>
+            </p>
+          </Link>
           <a
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
             className={styles.card}
