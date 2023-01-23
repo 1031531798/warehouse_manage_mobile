@@ -1,31 +1,39 @@
-import {Button, TextField} from '@mui/material'
+import {AlertColor, Button, TextField} from '@mui/material'
 import PasswordInput from "@/components/Input/passwordInput";
 import React, {useState} from "react";
 import {Snackbar, Alert} from '@mui/material';
+import {loginUser} from "@/api/login";
 export default function LoginPage () {
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
     const [message, setMessage] = useState('')
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
+    const [type, setType] = useState<AlertColor>('error');
 
 
     const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
-        if (reason === 'clickaway') {
-            return;
-        }
         setOpen(false);
     };
+    function showMessage(message: string, type: AlertColor ='error') {
+        setMessage(message)
+        setType(type)
+        setOpen(true)
+    }
 
     function clickSubmit () {
         if (!userName) {
-            setMessage('用户名不能为空')
-            setOpen(true)
+            showMessage('用户名不能为空', 'error')
             return
         }else if (!password) {
-            setMessage('密码不能为空')
-            setOpen(true)
+            showMessage('密码不能为空','error')
             return
         }
+        loginUser({
+            userName,
+            password
+        }).then(() => {
+            showMessage('登录成功', 'success')
+        })
         console.log('click submit')
     }
     return (
@@ -36,7 +44,7 @@ export default function LoginPage () {
                 <PasswordInput onChange={setPassword} className={"mt-5 w-full"} label={"密码"} variant={"outlined"}></PasswordInput>
                 <Button onClick={clickSubmit} className={"mt-5 w-full"} variant={"contained"}>登录系统</Button>
                 <Snackbar open={open} autoHideDuration={2000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
-                    <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+                    <Alert onClose={handleClose} severity={type} sx={{ width: '100%' }}>
                         {message}
                     </Alert>
                 </Snackbar>
