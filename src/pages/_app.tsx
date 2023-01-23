@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app'
 import {useEffect, useState} from "react";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import PageHeader from "@/components/PageHeader";
 
 export default function App({ Component, pageProps }: AppProps) {
   // 跟随系统 theme mode
@@ -21,10 +22,10 @@ export default function App({ Component, pageProps }: AppProps) {
       }))
     }
   }, [])
-
   return (
       <ThemeProvider theme={themeMode}>
         <CssBaseline />
+        <PageHeader></PageHeader>
         <Component {...pageProps} />
       </ThemeProvider>
   )

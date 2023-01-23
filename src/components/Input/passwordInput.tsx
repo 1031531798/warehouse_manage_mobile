@@ -1,11 +1,11 @@
 import {FormControl, OutlinedInput, InputLabel, InputAdornment, IconButton} from "@mui/material";
-import {useState} from "react";
+import React, {useState} from "react";
 import {Visibility, VisibilityOff} from "@mui/icons-material";
 
 interface PasswordInputProps {
     label?: string;
     variant?: "outlined" | "standard" | "filled";
-    onChange?: (value: boolean) => void;
+    onChange?: (value: string) => void;
     className?: string;
 }
 export default function PasswordInput (props: PasswordInputProps) {
@@ -13,7 +13,9 @@ export default function PasswordInput (props: PasswordInputProps) {
     const {label = '密码', variant = 'outlined', onChange, className = 'w-full'} = props
     function handleClickShowPassword () {
        setShowPassword(!showPassword)
-        onChange && onChange(showPassword)
+    }
+    function handleChange (e:  React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) {
+        onChange && onChange(e.target.value)
     }
     return (
         <FormControl className={className} variant={variant}>
@@ -21,6 +23,7 @@ export default function PasswordInput (props: PasswordInputProps) {
             <OutlinedInput
                 id="outlined-adornment-password"
                 type={showPassword ? 'password' : 'text'}
+                onChange={handleChange}
                 endAdornment={
                     <InputAdornment position="end">
                         <IconButton
