@@ -3,7 +3,7 @@ import { isNullOrUnDef } from './is';
 import { AesEncryption } from './encryption';
 export interface CacheConfig {
   key: string,
-  storage: Storage,
+  storage?: Storage,
   value?: any,
   iv?: string,
   hasEncrypt?: boolean,

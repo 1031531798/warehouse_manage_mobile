@@ -4,7 +4,8 @@ import PasswordInput from "@/components/Input/passwordInput";
 import React, {useState} from "react";
 import {loginUser} from "@/api/login";
 import { useRouter } from 'next/router'
-import useUserStore from "@/store/user";
+// import useUserStore from "@/store/user";
+console.warn('创建login-------------------------')
 export default function LoginPage () {
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
@@ -13,7 +14,7 @@ export default function LoginPage () {
     const [type, setType] = useState<AlertColor>('error');
     const [btnLoading, setBtnLoading] = useState(false)
     const router = useRouter()
-    const userStore = useUserStore()
+    // const userStore = useUserStore()
     const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
         setOpen(false);
     };
@@ -37,7 +38,8 @@ export default function LoginPage () {
             password
         }).then(({data}) => {
             showMessage('登录成功', 'success')
-            userStore.setUserInfo(data.data)
+            // userStore.setUserInfo(data.data)
+            // data.data.userToken && userStore.setToken(data.data.userToken)
             router.push('/home').finally(() => {
                 setBtnLoading(false)
             })

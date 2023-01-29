@@ -1,10 +1,11 @@
-import useUserStore from "@/store/user";
-
+import dynamic from 'next/dynamic';
 const HomePage = () => {
-    const userStore = useUserStore()
+    const UserBox = dynamic(() => import('./homeUserBox'), {
+        loading: () => (<div>加载中...</div>),
+    })
     return (
         <div className={'home-page'}>
-            {userStore.userInfo.userName}
+           <UserBox />
         </div>
     )
 }
