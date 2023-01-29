@@ -1,6 +1,5 @@
 import  {AxiosInstance} from "axios";
 import {requestCode} from "./requestCode";
-// import useStore from "../../store";
 
 // axios 拦截器
 export function axiosInterceptors (request: AxiosInstance) {
@@ -9,7 +8,7 @@ export function axiosInterceptors (request: AxiosInstance) {
         // 在发送请求之前做些什么
         // const {headers} = config
         // const {token} = useStore.getState()
-        // // 请求头添加token
+        // 请求头添加token
         // if (token && headers) {
         //     headers.token = token
         // }
@@ -25,6 +24,7 @@ export function axiosInterceptors (request: AxiosInstance) {
         return new Promise((resolve, reject) => {
             const {data} = response
             const {code, message} = data
+            console.log(code, response)
             if (code === requestCode.RESULT_CODE_SUCCESS) {
                 resolve(response)
             }else {

@@ -205,10 +205,10 @@
   resolved "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@mui/base@5.0.0-alpha.114":
-  version "5.0.0-alpha.114"
-  resolved "https://registry.npmmirror.com/@mui/base/-/base-5.0.0-alpha.114.tgz#19125f28b7d09d1cc60550872440ecba699d8374"
-  integrity sha512-ZpsG2I+zTOAnVTj3Un7TxD2zKRA2OhEPGMcWs/9ylPlS6VuGQSXowPooZiqarjT7TZ0+1bOe8titk/t8dLFiGw==
+"@mui/base@5.0.0-alpha.115":
+  version "5.0.0-alpha.115"
+  resolved "https://registry.npmmirror.com/@mui/base/-/base-5.0.0-alpha.115.tgz#582b147fda56fe52d561fe9f64406e036d882338"
+  integrity sha512-OGQ84whT/yNYd6xKCGGS6MxqEfjVjk5esXM7HP6bB2Rim7QICUapxZt4nm8q39fpT08rNDkv3xPVqDDwRdRg1g==
   dependencies:
     "@babel/runtime" "^7.20.7"
     "@emotion/is-prop-valid" "^1.2.0"
@@ -219,10 +219,10 @@
     prop-types "^15.8.1"
     react-is "^18.2.0"
 
-"@mui/core-downloads-tracker@^5.11.5":
-  version "5.11.5"
-  resolved "https://registry.npmmirror.com/@mui/core-downloads-tracker/-/core-downloads-tracker-5.11.5.tgz#473c9b918d974f03acc07d29ce467bb91eba13c6"
-  integrity sha512-MIuWGjitOsugpRhp64CQY3ZEVMIu9M/L9ioql6QLSkz73+bGIlC9FEhfi670/GZ8pQIIGmtiGGwofYzlwEWjig==
+"@mui/core-downloads-tracker@^5.11.6":
+  version "5.11.6"
+  resolved "https://registry.npmmirror.com/@mui/core-downloads-tracker/-/core-downloads-tracker-5.11.6.tgz#79a60c0d95a08859cccd62a8d9a5336ef477a840"
+  integrity sha512-lbD3qdafBOf2dlqKhOcVRxaPAujX+9UlPC6v8iMugMeAXe0TCgU3QbGXY3zrJsu6ex64WYDpH4y1+WOOBmWMuA==
 
 "@mui/icons-material@^5.11.0":
   version "5.11.0"
@@ -231,14 +231,28 @@
   dependencies:
     "@babel/runtime" "^7.20.6"
 
-"@mui/material@^5.11.5":
-  version "5.11.5"
-  resolved "https://registry.npmmirror.com/@mui/material/-/material-5.11.5.tgz#b4867b4a6f3289e41f70b4393c075a799be8d24b"
-  integrity sha512-5fzjBbRYaB5MoEpvA32oalAWltOZ3/kSyuovuVmPc6UF6AG42lTtbdMLpdCygurFSGUMZYTg4Cjij52fKlDDgg==
+"@mui/lab@^5.0.0-alpha.117":
+  version "5.0.0-alpha.117"
+  resolved "https://registry.npmmirror.com/@mui/lab/-/lab-5.0.0-alpha.117.tgz#c7913aa13f42a5c9534e658607384e01c8001b5a"
+  integrity sha512-g+EN4jnoy6bwf3U/4q+L9gAVXoOky+T+VEDWzOP3BZLVghO63X0oaBx12TPOCnGDJKm0crFsIiyQQmYQkaGJqA==
   dependencies:
     "@babel/runtime" "^7.20.7"
-    "@mui/base" "5.0.0-alpha.114"
-    "@mui/core-downloads-tracker" "^5.11.5"
+    "@mui/base" "5.0.0-alpha.115"
+    "@mui/system" "^5.11.5"
+    "@mui/types" "^7.2.3"
+    "@mui/utils" "^5.11.2"
+    clsx "^1.2.1"
+    prop-types "^15.8.1"
+    react-is "^18.2.0"
+
+"@mui/material@^5.11.6":
+  version "5.11.6"
+  resolved "https://registry.npmmirror.com/@mui/material/-/material-5.11.6.tgz#0055e7bdf5f89bb7f2a5cf0a3252dadfc9122c50"
+  integrity sha512-MzkkL5KC2PCkFiv8cLpkzgLUPXSrAtnvJBR0emV7mLVWbkwV3n5832vjBx154B6R032fHjFTziTh7YEb50nK6Q==
+  dependencies:
+    "@babel/runtime" "^7.20.7"
+    "@mui/base" "5.0.0-alpha.115"
+    "@mui/core-downloads-tracker" "^5.11.6"
     "@mui/system" "^5.11.5"
     "@mui/types" "^7.2.3"
     "@mui/utils" "^5.11.2"
@@ -429,6 +443,11 @@
   integrity sha512-4C7nX/dvpzB7za4Ql9K81xK3HPxCpHMgwTZVyf+9JQ6VUbn9jjZVN7/Nkdz/Ugzs2CSjqnL/UPXroiVBVHUWUw==
   dependencies:
     tslib "^2.4.0"
+
+"@types/crypto-js@^4.1.1":
+  version "4.1.1"
+  resolved "https://registry.npmmirror.com/@types/crypto-js/-/crypto-js-4.1.1.tgz#602859584cecc91894eb23a4892f38cfa927890d"
+  integrity sha512-BG7fQKZ689HIoc5h+6D2Dgq1fABRa0RbBWKBd9SP/MVRVXROflpm5fhwyATX5duFmbStzyzyycPB8qUYKDH3NA==
 
 "@types/json5@^0.0.29":
   version "0.0.29"
@@ -881,6 +900,11 @@ cross-spawn@^7.0.2, cross-spawn@^7.0.3:
     path-key "^3.1.0"
     shebang-command "^2.0.0"
     which "^2.0.1"
+
+crypto-js@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.npmmirror.com/crypto-js/-/crypto-js-4.1.1.tgz#9e485bcf03521041bd85844786b83fb7619736cf"
+  integrity sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==
 
 cssesc@^3.0.0:
   version "3.0.0"
@@ -2747,6 +2771,11 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
+use-sync-external-store@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.npmmirror.com/use-sync-external-store/-/use-sync-external-store-1.2.0.tgz#7dbefd6ef3fe4e767a0cf5d7287aacfb5846928a"
+  integrity sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==
+
 util-deprecate@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz"
@@ -2821,3 +2850,10 @@ yocto-queue@^0.1.0:
   version "0.1.0"
   resolved "https://registry.npmjs.org/yocto-queue/-/yocto-queue-0.1.0.tgz"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
+
+zustand@^4.3.2:
+  version "4.3.2"
+  resolved "https://registry.npmmirror.com/zustand/-/zustand-4.3.2.tgz#bb121fcad84c5a569e94bd1a2695e1a93ba85d39"
+  integrity sha512-rd4haDmlwMTVWVqwvgy00ny8rtti/klRoZjFbL/MAcDnmD5qSw/RZc+Vddstdv90M5Lv6RPgWvm1Hivyn0QgJw==
+  dependencies:
+    use-sync-external-store "1.2.0"
