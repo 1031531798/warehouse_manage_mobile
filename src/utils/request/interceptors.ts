@@ -1,14 +1,13 @@
 import  {AxiosInstance} from "axios";
 import {requestCode} from "./requestCode";
-import useUserStore from "@/store/user";
-
+import useUserStore from '@/store/user'
 // axios 拦截器
 export function axiosInterceptors (request: AxiosInstance) {
     // 请求拦截
     request.interceptors.request.use((config) => {
         // 在发送请求之前做些什么
         const {headers} = config
-        const {token} = useUserStore()
+        const {token} = useUserStore.getState()
         // 请求头添加token
         if (token && headers) {
             headers.token = token

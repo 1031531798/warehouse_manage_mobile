@@ -10,7 +10,7 @@ export interface CacheConfig {
   timeout?: null | number;
 }
 export const createStorage = ({
-  storage = sessionStorage,
+  storage,
   key = cacheSettings.cacheCipher.key,
   iv = cacheSettings.cacheCipher.iv,
   timeout = cacheSettings.cacheTimeOut,
@@ -26,7 +26,7 @@ export const createStorage = ({
    * Cache class
    */
   const WebStorage = class WebStorage {
-    private storage: Storage;
+    private storage: Storage | undefined;
     private prefixKey?: string;
     private encryption: AesEncryption;
     private hasEncrypt: boolean;
@@ -56,7 +56,7 @@ export const createStorage = ({
       const stringifyValue = this.hasEncrypt
         ? this.encryption.encryptByAES(stringData)
         : stringData;
-      this.storage.setItem(this.getKey(key), stringifyValue);
+      this.storage?.setItem(this.getKey(key), stringifyValue);
     }
 
     /**
@@ -66,7 +66,7 @@ export const createStorage = ({
      * @memberof Cache
      */
     get(key: string, def: any = null): any {
-      const val = this.storage.getItem(this.getKey(key));
+      const val = this.storage?.getItem(this.getKey(key));
       if (!val) return def;
 
       try {
@@ -88,14 +88,14 @@ export const createStorage = ({
      * @memberof Cache
      */
     remove(key: string) {
-      this.storage.removeItem(this.getKey(key));
+      this.storage?.removeItem(this.getKey(key));
     }
 
     /**
      * 删除所有缓存
      */
     clear(): void {
-      this.storage.clear();
+      this.storage?.clear();
     }
   };
   return new WebStorage();

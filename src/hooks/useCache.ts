@@ -4,7 +4,11 @@ import { CacheConfig, createStorage } from '../utils/cache';
 
 
 export function getCache(config: CacheConfig) {
+  if (typeof window === 'undefined') {
+      return false
+  }
   const { key} = config
+
   if (isString(key)) {
     return createStorage(config).get(key)
   }
