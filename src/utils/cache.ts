@@ -10,7 +10,7 @@ export interface CacheConfig {
   timeout?: null | number;
 }
 export const createStorage = ({
-  storage,
+  storage = sessionStorage,
   key = cacheSettings.cacheCipher.key,
   iv = cacheSettings.cacheCipher.iv,
   timeout = cacheSettings.cacheTimeOut,
