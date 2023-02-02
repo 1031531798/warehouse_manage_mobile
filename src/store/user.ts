@@ -16,6 +16,7 @@ const useUserStore = create<UserStore>((set) => ({
     setToken: (token: string) => {
         setCache({
             key: CacheEnum.token,
+            storage: sessionStorage,
             value: token,
         })
         return set(() => (
