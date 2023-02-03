@@ -1,11 +1,11 @@
-import {routePage} from "../../router";
+import {routePage, RouteProp} from "../../router";
 import {isString} from "@/utils/is";
 
 /**
  * @description 获取当前route对象
  * @param path
  */
-export function getRoutePage (path: string) {
+export function getRoutePage (path: string): RouteProp {
     let notFindPage = {
         path: '404',
         name: '路由不存在'

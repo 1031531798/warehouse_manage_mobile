@@ -1,13 +1,16 @@
 import '@/styles/globals.css'
 import "tailwindcss/tailwind.css"
 import type { AppProps } from 'next/app'
-import {useEffect, useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import PageHeader from "@/components/PageHeader";
+
 import useUserStore from "@/store/user";
 import {getUserDetailByToken} from "@/api/login";
 import {useRouter} from "next/router";
+import {getRoutePage} from "@/hooks/useRoute";
+import PageBottomNavigation from "@/components/BottomNavigation";
 export default function App({ Component, pageProps }: AppProps) {
     const userStore = useUserStore()
     const router = useRouter()
@@ -36,11 +39,24 @@ export default function App({ Component, pageProps }: AppProps) {
             }))
         }
     }, [])
+    const getPageHeader = useMemo(() => {
+        const route = getRoutePage(router.pathname)
+        return !route.hideHeader ? <PageHeader></PageHeader> : ''
+    }, [router.pathname])
+    const getBottomNavigation = useMemo(() => {
+        const route = getRoutePage(router.pathname)
+        return !route.hideNavigation ? (<PageBottomNavigation></PageBottomNavigation>) : ''
+    }, [router.pathname])
     return (
-        <ThemeProvider theme={themeMode}>
-            <CssBaseline />
-            <PageHeader></PageHeader>
-            <Component {...pageProps} />
-        </ThemeProvider>
+        <div className={'flex flex-col w-full h-full'}>
+            <ThemeProvider theme={themeMode}>
+                <CssBaseline />
+                {getPageHeader}
+                <main className={'flex-1'}>
+                    <Component {...pageProps} />
+                </main>
+                {getBottomNavigation}
+            </ThemeProvider>
+        </div>
     )
 }
