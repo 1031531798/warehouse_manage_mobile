@@ -11,6 +11,14 @@ export const routePage: RouteProp[] = [
         name: '首页',
     },
     {
+        path: '/task',
+        name: '任务',
+    },
+    {
+        path: '/user',
+        name: '我的',
+    },
+    {
         path: '/login',
         name: '登录',
         hideHeader: true,
