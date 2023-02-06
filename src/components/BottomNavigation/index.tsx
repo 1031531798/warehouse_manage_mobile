@@ -23,6 +23,7 @@ export default function PageBottomNavigation() {
             router.push(item.path)
         }
     }
+    // 监听路由变化自动切换选中
     useMemo(() => {
         // 获取最前端路由名称
         const pathName = '/' + router.pathname.split('/')[1]
@@ -30,7 +31,7 @@ export default function PageBottomNavigation() {
         if (index >= 0) {
             setValue(index)
         }
-    }, [router])
+    }, [router.pathname])
     function renderNavigationAction () {
         return bottoms.map(item => {
             return <BottomNavigationAction onClick={() => navClick(item)} key={item.path} label={item.label} icon={item.icon} />

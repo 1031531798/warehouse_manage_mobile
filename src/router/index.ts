@@ -1,8 +1,10 @@
 export type RouteProp = {
     path: string,
+    fullPath?: string
     name: string,
-    hideHeader?: boolean
-    hideNavigation?: boolean
+    hideHeader?: boolean // 是否隐藏页头
+    hideNavigation?: boolean // 是否隐藏底部导航
+    children?: RouteProp[]
 }
 
 export const routePage: RouteProp[] = [
@@ -17,6 +19,13 @@ export const routePage: RouteProp[] = [
     {
         path: '/storage',
         name: '入库',
+        children: [
+            {
+                path: '/good',
+                name: '商品',
+                fullPath: '/storage/good'
+            }
+        ]
     },
     {
         path: '/user',

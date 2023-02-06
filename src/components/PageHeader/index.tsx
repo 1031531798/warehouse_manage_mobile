@@ -10,7 +10,7 @@ const PageHeader =  () => {
     const route = useMemo(() => {
         return getRoutePage(router.pathname)
     }, [router.pathname])
-    const navItems = ['Home', 'About', 'Contact'];
+    const navItems = ['个人爱好', '用户管理', '系统设置'];
     function handleBack () {
         router.back()
     }
@@ -18,10 +18,11 @@ const PageHeader =  () => {
     function handleDrawerToggle () {
         setDrawerOpen(!drawerOpen)
     }
+    // 左侧抽屉内容
     const drawer = (
         <Box sx={{ textAlign: 'center' }}>
             <Typography variant="h6" sx={{ my: 2 }}>
-                MUI
+                辅助功能
             </Typography>
             <Divider />
             <List>
@@ -74,11 +75,6 @@ const PageHeader =  () => {
                 </Drawer>
             </Box>
         </Box>
-        // <header className={'flex-row center mt-1 mb-1 p-2'}>
-        //     <IconButton aria-label="back" size="large" onClick={handleBack}>
-        //         <KeyboardBackspaceIcon style={{color: 'rgb(var(--foreground-rgb))'}} fontSize="large"></KeyboardBackspaceIcon>
-        //     </IconButton>
-        // </header>
     )
 }
 

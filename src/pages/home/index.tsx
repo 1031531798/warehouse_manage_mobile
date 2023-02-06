@@ -1,5 +1,4 @@
 import StatisticBox from "@/pages/home/statisticsBox";
-import HomeMenuBox from "@/pages/home/menuBox";
 import HomeMenu from "@/pages/home/homeMenu";
 
 const HomePage = () => {
