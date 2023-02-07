@@ -1,11 +1,37 @@
-import {Box} from "@mui/material";
-
+import {Box, IconButton, InputAdornment} from "@mui/material";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import {useRouterBack} from "@/hooks/useRoute";
+import FormBottoms, {FormButtonColumnProps} from "@/components/FormBottom";
+import Form from "@/components/Form"
+import {FormItemOptions} from "@/components/Form/type";
 const GoodPage = () => {
+    const {back} = useRouterBack()
+    const btnColumn: FormButtonColumnProps[] = [
+        {label: '保存', event: 'submit', variant: "contained", color: 'success', sx: {ml: 2}},
+        {label: '取消', event: 'cancel', variant: 'outlined'}
+    ]
+    function handleSubmit (data: any) {
+        console.log(data)
+        return false
+    }
+    const formColumns: FormItemOptions[] = [
+        {label: '商品名称', id: 'goodsName', required: true, xs: 12, fullWidth: true},
+        {label: '商品编号', id: 'goodsCode', required: true},
+        {label: '商品价格', id: 'price', type: 'number', InputProps: {endAdornment: <InputAdornment position="start">元</InputAdornment>}},
+        {label: '商品数量', id: 'goodsNum', InputProps: {endAdornment: <InputAdornment position="start">件</InputAdornment>}},
+    ]
+    const formMenu = <FormBottoms className={'justify-center mt-2'} onCancel={back} onSubmit={handleSubmit} column={btnColumn}></FormBottoms>
     return (
         <>
-            <Box>
-                <span>添加商品</span>
-            </Box>
+            <div>
+                <IconButton aria-label="back" onClick={back}>
+                    <ArrowBackIcon fontSize={'medium'} />
+                </IconButton>
+                <Box>
+                    <h3 className={'w-full text-center'}>添加商品</h3>
+                </Box>
+                <Form menu={formMenu} columns={formColumns}></Form>
+            </div>
         </>
     )
 }

@@ -1,5 +1,6 @@
 import {routePage, RouteProp} from "../router";
 import {isString} from "@/utils/is";
+import {useRouter} from "next/router";
 
 /**
  * @description 获取当前route对象
@@ -20,4 +21,14 @@ export function getRoutePage (path: string): RouteProp {
         }
     }
     return route
+}
+
+export function useRouterBack () {
+    const router = useRouter()
+    const back = () => {
+        router.back()
+    }
+    return {
+        back
+    }
 }

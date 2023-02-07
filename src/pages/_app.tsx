@@ -21,6 +21,7 @@ export default function App({ Component, pageProps }: AppProps) {
             const mql: MediaQueryList = window.matchMedia('(prefers-color-scheme: dark)');
             return mql.matches;
         }
+        // 判断token
         if (userStore.token) {
             getUserDetailByToken().then(({data}) => {
                 console.log(data, '获取到的用户')
