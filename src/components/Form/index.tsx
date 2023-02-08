@@ -2,11 +2,11 @@ import {Box, Button, TextField} from "@mui/material";
 import Grid from '@mui/material/Unstable_Grid2';
 import { FormProps} from "@/components/Form/type";
 import {defaultFormOption, defaultItemOption} from "@/components/Form/utils";
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 
 
 const Form = (props: FormProps) => {
-    const {menu} = defaultFormOption(props)
+    const {menu, register} = defaultFormOption(props)
     const [columns, onSubmit] = useState(defaultItemOption(props.columns))
     const [formData, setFormData] = useState({})
     const formRef = useRef<HTMLFormElement>()
@@ -43,6 +43,8 @@ const Form = (props: FormProps) => {
             onSubmit && onSubmit(data)
         }
     }
+    // 注册form 事件
+    register && register({submitForm, getFormData, setFormData})
     return (
         <>
             <Box
@@ -52,7 +54,6 @@ const Form = (props: FormProps) => {
                 <Grid className={'p-1'} container rowSpacing={2} columnSpacing={{ xs: 2, sm: 2, md: 3 }}>
                     {renderFormCell()}
                 </Grid>
-                <Button onClick={submitForm}>提交</Button>
                 {menu}
             </Box>
         </>

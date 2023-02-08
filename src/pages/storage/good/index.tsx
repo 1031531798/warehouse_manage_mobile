@@ -4,14 +4,18 @@ import {useRouterBack} from "@/hooks/useRoute";
 import FormBottoms, {FormButtonColumnProps} from "@/components/FormBottom";
 import Form from "@/components/Form"
 import {FormItemOptions} from "@/components/Form/type";
+import {useForm} from "@/hooks/useForm";
+import {useState} from "react";
 const GoodPage = () => {
     const {back} = useRouterBack()
+    useState()
     const btnColumn: FormButtonColumnProps[] = [
         {label: '保存', event: 'submit', variant: "contained", color: 'success', sx: {ml: 2}},
         {label: '取消', event: 'cancel', variant: 'outlined'}
     ]
-    function handleSubmit (data: any) {
-        console.log(data)
+    const [register, {submitForm}] = useForm()
+    function handleSubmit () {
+        submitForm()
         return false
     }
     const formColumns: FormItemOptions[] = [
@@ -30,7 +34,7 @@ const GoodPage = () => {
                 <Box>
                     <h3 className={'w-full text-center'}>添加商品</h3>
                 </Box>
-                <Form menu={formMenu} columns={formColumns}></Form>
+                <Form register={register} menu={formMenu} columns={formColumns}></Form>
             </div>
         </>
     )
