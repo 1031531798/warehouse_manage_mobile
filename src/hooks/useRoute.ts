@@ -23,12 +23,23 @@ export function getRoutePage (path: string): RouteProp {
     return route
 }
 
-export function useRouterBack () {
+type UseGoReturn = {
+    go: (path: string, callback?: () => void) => void
+    back: () => void
+}
+export function useGo (): UseGoReturn {
     const router = useRouter()
+    const go = (path: string, callback?: () => void) => {
+        router.push(path).then(callback)
+    }
     const back = () => {
         router.back()
     }
     return {
+        go,
         back
     }
 }
+
+
+

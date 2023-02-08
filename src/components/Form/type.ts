@@ -15,7 +15,8 @@ export type FormItemOptions = {
 } & TextFieldProps
 
 export interface FormMethods {
-    submitForm: () => void
+    submitForm?: () => Promise<unknown>
     getFormData: () => {}
     setFormData: (data: any) => void
+    resetForm: () => void
 }

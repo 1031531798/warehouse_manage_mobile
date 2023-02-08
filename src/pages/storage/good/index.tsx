@@ -1,21 +1,28 @@
 import {Box, IconButton, InputAdornment} from "@mui/material";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import {useRouterBack} from "@/hooks/useRoute";
+import {useGo} from "@/hooks/useRoute";
 import FormBottoms, {FormButtonColumnProps} from "@/components/FormBottom";
 import Form from "@/components/Form"
 import {FormItemOptions} from "@/components/Form/type";
 import {useForm} from "@/hooks/useForm";
-import {useState} from "react";
+import {saveGoodsApi} from "@/api/goods";
 const GoodPage = () => {
-    const {back} = useRouterBack()
-    useState()
     const btnColumn: FormButtonColumnProps[] = [
-        {label: '保存', event: 'submit', variant: "contained", color: 'success', sx: {ml: 2}},
-        {label: '取消', event: 'cancel', variant: 'outlined'}
+        {label: '保存', event: 'submit', variant: "contained", className: 'w-1/2'},
+        {label: '取消', event: 'cancel', variant: 'outlined', className: 'w-1/2'}
     ]
-    const [register, {submitForm}] = useForm()
+    const {go} = useGo()
+    function back () {
+        go('/storage')
+    }
+    const [register, {submitForm, resetForm}] = useForm()
     function handleSubmit () {
-        submitForm()
+        submitForm && submitForm().then((data) => {
+            console.log('表单提交成功的数据：', data)
+            saveGoodsApi(data).then(() => {
+                resetForm()
+            })
+        })
         return false
     }
     const formColumns: FormItemOptions[] = [
@@ -24,7 +31,7 @@ const GoodPage = () => {
         {label: '商品价格', id: 'price', type: 'number', InputProps: {endAdornment: <InputAdornment position="start">元</InputAdornment>}},
         {label: '商品数量', id: 'goodsNum', InputProps: {endAdornment: <InputAdornment position="start">件</InputAdornment>}},
     ]
-    const formMenu = <FormBottoms className={'justify-center mt-2'} onCancel={back} onSubmit={handleSubmit} column={btnColumn}></FormBottoms>
+    const formMenu = <FormBottoms className={'justify-center mt-2 p-2'} onCancel={back} onSubmit={handleSubmit} column={btnColumn}></FormBottoms>
     return (
         <>
             <div>
@@ -32,7 +39,7 @@ const GoodPage = () => {
                     <ArrowBackIcon fontSize={'medium'} />
                 </IconButton>
                 <Box>
-                    <h3 className={'w-full text-center'}>添加商品</h3>
+                    <h3 className={'w-full text-center mb-2'}>添加商品</h3>
                 </Box>
                 <Form register={register} menu={formMenu} columns={formColumns}></Form>
             </div>

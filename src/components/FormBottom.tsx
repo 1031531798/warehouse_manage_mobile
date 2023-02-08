@@ -17,7 +17,7 @@ const FormButtons = ({column, onSubmit, className, spacing = 2, direction = "row
     const buttonList = useMemo(() => {
         return column.map(item => {
             return (
-                <Button key={item.label} variant={item.variant}  onClick={() => handleClick(item)}>{item.label}</Button>
+                <Button {...item} key={item.label} onClick={() => handleClick(item)}>{item.label}</Button>
             )
         })
     }, [column])

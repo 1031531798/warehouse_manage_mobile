@@ -1,5 +1,5 @@
 import {FormMethods} from "@/components/Form/type";
-import {useRef, useState} from "react";
+import {useRef} from "react";
 
 type UseFormReturn = [
     (methods: FormMethods) => void,
@@ -10,11 +10,12 @@ function notRegister () {
     return false
 }
 const defaultMethods = {
-    submitForm: notRegister,
     getFormData: notRegister,
-    setFormData: notRegister
+    setFormData: notRegister,
+    resetForm: notRegister
 }
 export function useForm (): UseFormReturn {
+    // 使用ref作为响应值
     let formMethods = useRef<FormMethods>(defaultMethods)
     const register = (methods: FormMethods) => {
         formMethods.current = methods

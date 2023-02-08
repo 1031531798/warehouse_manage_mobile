@@ -1,4 +1,4 @@
-import {Box, Button, TextField} from "@mui/material";
+import {Box, TextField} from "@mui/material";
 import Grid from '@mui/material/Unstable_Grid2';
 import { FormProps} from "@/components/Form/type";
 import {defaultFormOption, defaultItemOption} from "@/components/Form/utils";
@@ -7,7 +7,7 @@ import {useEffect, useRef, useState} from "react";
 
 const Form = (props: FormProps) => {
     const {menu, register} = defaultFormOption(props)
-    const [columns, onSubmit] = useState(defaultItemOption(props.columns))
+    const [columns] = useState(defaultItemOption(props.columns))
     const [formData, setFormData] = useState({})
     const formRef = useRef<HTMLFormElement>()
     const renderFormCell = () => {
@@ -36,15 +36,26 @@ const Form = (props: FormProps) => {
         return data
     }
 
-    function submitForm () {
-        if (formRef.current?.reportValidity()) {
-            const data = getFormData()
-            setFormData(data)
-            onSubmit && onSubmit(data)
-        }
+    function submitForm (): Promise<unknown> {
+        return new Promise((resolve, reject) => {
+            if (formRef.current?.reportValidity()) {
+                const data = getFormData()
+                setFormData(data)
+                resolve(data)
+            }else {
+                reject('表单校验不通过')
+            }
+        })
+
+    }
+    function resetForm () {
+        setFormData({})
+        formRef.current?.reset()
     }
     // 注册form 事件
-    register && register({submitForm, getFormData, setFormData})
+    useEffect(() => {
+        register && register({submitForm, getFormData, setFormData, resetForm})
+    }, [register])
     return (
         <>
             <Box
