@@ -11,6 +11,7 @@ import {getUserDetailByToken} from "@/api/login";
 import {useRouter} from "next/router";
 import {getRoutePage} from "@/hooks/useRoute";
 import PageBottomNavigation from "@/components/BottomNavigation";
+import Toast from "@/components/Toast";
 export default function App({ Component, pageProps }: AppProps) {
     const userStore = useUserStore()
     const router = useRouter()
@@ -57,6 +58,7 @@ export default function App({ Component, pageProps }: AppProps) {
                     <Component {...pageProps} />
                 </main>
                 {getBottomNavigation}
+                <Toast />
             </ThemeProvider>
         </div>
     )

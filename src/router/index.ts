@@ -21,9 +21,9 @@ export const routePage: RouteProp[] = [
         name: '入库',
         children: [
             {
-                path: '/good',
+                path: '/goods',
                 name: '商品',
-                fullPath: '/storage/good'
+                fullPath: '/storage/goods'
             }
         ]
     },

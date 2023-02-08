@@ -5,31 +5,20 @@ import React, {useState} from "react";
 import {loginUser} from "@/api/login";
 import { useRouter } from 'next/router'
 import useUserStore from "@/store/user";
+import {useToast} from "@/hooks/useToast";
 export default function LoginPage () {
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
-    const [message, setMessage] = useState('')
-    const [open, setOpen] = useState(false);
-    const [type, setType] = useState<AlertColor>('error');
     const [btnLoading, setBtnLoading] = useState(false)
     const router = useRouter()
     const userStore = useUserStore()
-
-    const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
-        setOpen(false);
-    };
-    function showMessage(message: string, type: AlertColor ='error') {
-        setMessage(message)
-        setType(type)
-        setOpen(true)
-    }
-
+    const {openToast} = useToast()
     function clickSubmit () {
         if (!userName) {
-            showMessage('用户名不能为空', 'error')
+            openToast({message: '用户名不能为空', type: 'error'})
             return
         }else if (!password) {
-            showMessage('密码不能为空','error')
+            openToast({message: '密码不能为空', type: 'error'})
             return
         }
         setBtnLoading(true)
@@ -37,7 +26,7 @@ export default function LoginPage () {
             userName,
             password
         }).then(({data}) => {
-            showMessage('登录成功', 'success')
+            openToast({message: '登录成功', type: 'success'})
             const {setToken, setUserInfo} = userStore
             setUserInfo(data.data)
             data.data.userToken && setToken(data.data.userToken)
@@ -45,8 +34,7 @@ export default function LoginPage () {
                 setBtnLoading(false)
             })
         }).catch(({data}) => {
-            console.log(data)
-            showMessage(data?.message, 'error');
+            openToast({message: data.message, type: 'error'})
             setBtnLoading(false)
         })
         console.log('click submit')
@@ -58,11 +46,6 @@ export default function LoginPage () {
                 <TextField onChange={(e) => setUserName(e.target.value)} className={"mt-5 w-full"} label={"用户名/手机号码"} variant={"outlined"}></TextField>
                 <PasswordInput onChange={setPassword} className={"mt-5 w-full"} label={"密码"} variant={"outlined"}></PasswordInput>
                 <LoadingButton  loading={btnLoading} loadingIndicator="登陆中…" onClick={clickSubmit} className={"mt-5 w-full"} variant={"contained"}>登录系统</LoadingButton>
-                <Snackbar open={open} autoHideDuration={2000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
-                    <Alert onClose={handleClose} severity={type} sx={{ width: '100%' }}>
-                        {message}
-                    </Alert>
-                </Snackbar>
             </div>
         </>
     )

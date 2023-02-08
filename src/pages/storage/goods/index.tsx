@@ -6,12 +6,14 @@ import Form from "@/components/Form"
 import {FormItemOptions} from "@/components/Form/type";
 import {useForm} from "@/hooks/useForm";
 import {saveGoodsApi} from "@/api/goods";
+import {useToast} from "@/hooks/useToast";
 const GoodPage = () => {
     const btnColumn: FormButtonColumnProps[] = [
         {label: '保存', event: 'submit', variant: "contained", className: 'w-1/2'},
         {label: '取消', event: 'cancel', variant: 'outlined', className: 'w-1/2'}
     ]
     const {go} = useGo()
+    const {openToast} = useToast()
     function back () {
         go('/storage')
     }
@@ -20,6 +22,10 @@ const GoodPage = () => {
         submitForm && submitForm().then((data) => {
             console.log('表单提交成功的数据：', data)
             saveGoodsApi(data).then(() => {
+                openToast({
+                    message: '新增成功',
+                    type: 'success'
+                })
                 resetForm()
             })
         })
