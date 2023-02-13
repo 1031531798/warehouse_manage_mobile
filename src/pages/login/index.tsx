@@ -43,9 +43,9 @@ export default function LoginPage () {
         <>
             <div className="p-6">
                 <h2 className="text-2xl">账号密码登录</h2>
-                <TextField onChange={(e) => setUserName(e.target.value)} className={"mt-5 w-full"} label={"用户名/手机号码"} variant={"outlined"}></TextField>
-                <PasswordInput onChange={setPassword} className={"mt-5 w-full"} label={"密码"} variant={"outlined"}></PasswordInput>
-                <LoadingButton  loading={btnLoading} loadingIndicator="登陆中…" onClick={clickSubmit} className={"mt-5 w-full"} variant={"contained"}>登录系统</LoadingButton>
+                <TextField onChange={(e) => setUserName(e.target.value)} sx={{mt: 2}} className={"w-full"} label={"用户名/手机号码"} variant={"outlined"}></TextField>
+                <PasswordInput onChange={setPassword} className={"w-full"} sx={{mt: 2}} label={"密码"} variant={"outlined"}></PasswordInput>
+                <LoadingButton  loading={btnLoading} sx={{mt: 2}} loadingIndicator="登陆中…" onClick={clickSubmit} className={"w-full"} variant={"contained"}>登录系统</LoadingButton>
             </div>
         </>
     )
