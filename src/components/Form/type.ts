@@ -2,9 +2,9 @@ import {TextFieldProps} from "@mui/material/TextField/TextField";
 // 表单配置
 export interface FormProps {
     menu?: JSX.Element
-    columns: FormItemOptions[]
+    columns: FormItemOptions[],
+    register?: (methods: FormMethods) => void
     ref?: any
-    onSubmit: (formData: any) => void
 }
 // 表单 单列配置
 export type FormItemOptions = {
@@ -13,3 +13,10 @@ export type FormItemOptions = {
     md?: number
 
 } & TextFieldProps
+
+export interface FormMethods {
+    submitForm?: () => Promise<unknown>
+    getFormData: () => {}
+    setFormData: (data: any) => void
+    resetForm: () => void
+}

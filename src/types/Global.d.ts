@@ -1,0 +1,1 @@
+declare type voidFn = () => void;

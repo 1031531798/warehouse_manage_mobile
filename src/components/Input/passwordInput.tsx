@@ -1,4 +1,4 @@
-import {FormControl, OutlinedInput, InputLabel, InputAdornment, IconButton} from "@mui/material";
+import {FormControl, OutlinedInput, InputLabel, InputAdornment, IconButton, SxProps} from "@mui/material";
 import React, {useState} from "react";
 import {Visibility, VisibilityOff} from "@mui/icons-material";
 
@@ -7,6 +7,8 @@ interface PasswordInputProps {
     variant?: "outlined" | "standard" | "filled";
     onChange?: (value: string) => void;
     className?: string;
+
+    sx?: SxProps
 }
 export default function PasswordInput (props: PasswordInputProps) {
     const [showPassword, setShowPassword] = useState(true)
@@ -18,7 +20,7 @@ export default function PasswordInput (props: PasswordInputProps) {
         onChange && onChange(e.target.value)
     }
     return (
-        <FormControl className={className} variant={variant}>
+        <FormControl sx={props.sx} className={className} variant={variant}>
             <InputLabel htmlFor="outlined-adornment-password">{label}</InputLabel>
             <OutlinedInput
                 id="outlined-adornment-password"

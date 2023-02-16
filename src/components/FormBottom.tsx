@@ -9,25 +9,25 @@ interface FormButtonProp {
     spacing?: number
     direction?: "column" | "row" | "row-reverse" | "column-reverse"
     className?: string
-    onSubmit: (data: any) => void
+    onSubmit: () => void
     onCancel: () => void
     column: FormButtonColumnProps[]
 }
 const FormButtons = ({column, onSubmit, className, spacing = 2, direction = "row", onCancel}: FormButtonProp) => {
     const buttonList = useMemo(() => {
         return column.map(item => {
-            if (item.event === 'submit') {
-                return (
-                    <Button key={item.label} type={'submit'} variant={item.variant} onSubmit={clickSubmit}>{item.label}</Button>
-                )
-            }else {
-
-                return (
-                    <Button key={item.label} variant={item.variant}  onClick={() => onCancel && onCancel()}>{item.label}</Button>
-                )
-            }
+            return (
+                <Button {...item} key={item.label} onClick={() => handleClick(item)}>{item.label}</Button>
+            )
         })
     }, [column])
+    function handleClick (item: FormButtonColumnProps) {
+        if (item.event === 'cancel') {
+            onCancel && onCancel()
+        }else {
+            onSubmit && onSubmit()
+        }
+    }
     function clickSubmit (e:any) {
         return false
     }

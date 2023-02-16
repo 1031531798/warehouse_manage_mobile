@@ -4,7 +4,7 @@ import {useRouter} from "next/router";
 const StoragePage = () => {
     const router = useRouter()
     function openGoodPage (type: 'add' | 'update' | 'detail') {
-        router.push('/storage/good').then(() => {
+        router.push('/storage/goods').then(() => {
             console.log(type)
         })
     }
