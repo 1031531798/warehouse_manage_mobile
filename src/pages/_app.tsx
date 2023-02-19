@@ -19,6 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
     let [themeMode, setThemeMode] = useState(createTheme())
     useEffect(() => {
         const isDarkTheme = () => {
+
             const mql: MediaQueryList = window.matchMedia('(prefers-color-scheme: dark)');
             return mql.matches;
         }

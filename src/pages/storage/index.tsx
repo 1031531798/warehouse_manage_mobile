@@ -1,6 +1,7 @@
 import {Box, Button} from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import {useRouter} from "next/router";
+import GoodsList from "@/pages/storage/goods/list";
 const StoragePage = () => {
     const router = useRouter()
     function openGoodPage (type: 'add' | 'update' | 'detail') {
@@ -16,6 +17,7 @@ const StoragePage = () => {
                     <Button variant="contained" startIcon={<AddIcon />}>商品入库</Button>
                 </Box>
             </div>
+            <GoodsList></GoodsList>
         </div>
     )
 }
