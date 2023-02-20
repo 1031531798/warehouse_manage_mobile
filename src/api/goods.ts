@@ -9,9 +9,16 @@ export function saveGoodsApi (data: any) {
 
 /**
  *
- * @description 保存商品
+ * @description 商品分页
  */
-export function getGoodsPageApi (data: any) {
-    return request.post('/goods/save', data)
+export function getGoodsPageApi (params: any) {
+    return request({method: "get", url:'/goods/page', params})
 }
 
+/**
+ *
+ * @description 全量列表
+ */
+export function getGoodsListApi (data: any) {
+    return request({method: 'get',url:'/goods/list', params: data})
+}

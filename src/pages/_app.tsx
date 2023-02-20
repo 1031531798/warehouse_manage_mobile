@@ -51,11 +51,11 @@ export default function App({ Component, pageProps }: AppProps) {
         return !route.hideNavigation ? (<PageBottomNavigation></PageBottomNavigation>) : ''
     }, [router.pathname])
     return (
-        <div className={'flex flex-col w-full h-full'}>
+        <div className={'flex flex-col w-full h-full flex-grow'}>
             <ThemeProvider theme={themeMode}>
                 <CssBaseline />
                 {getPageHeader}
-                <main className={'flex-1'}>
+                <main className={'flex flex-grow h-0'}>
                     <Component {...pageProps} />
                 </main>
                 {getBottomNavigation}

@@ -35,7 +35,7 @@ const GoodPage = () => {
         {label: '商品名称', id: 'goodsName', required: true, xs: 12, fullWidth: true},
         {label: '商品编号', id: 'goodsCode', required: true},
         {label: '商品价格', id: 'price', type: 'number', InputProps: {endAdornment: <InputAdornment position="start">元</InputAdornment>}},
-        {label: '商品数量', id: 'goodsNum', InputProps: {endAdornment: <InputAdornment position="start">件</InputAdornment>}},
+        {label: '商品数量', id: 'goodsNum', type:'', InputProps: {endAdornment: <InputAdornment position="start">件</InputAdornment>}},
     ]
     const formMenu = <FormBottoms className={'justify-center mt-2 p-2'} onCancel={back} onSubmit={handleSubmit} column={btnColumn}></FormBottoms>
     return (
