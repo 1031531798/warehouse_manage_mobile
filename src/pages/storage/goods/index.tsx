@@ -7,6 +7,7 @@ import {FormItemOptions} from "@/components/Form/type";
 import {useForm} from "@/hooks/useForm";
 import {saveGoodsApi} from "@/api/goods";
 import {useToast} from "@/hooks/useToast";
+import Upload from '@/components/Upload'
 const GoodPage = () => {
     const btnColumn: FormButtonColumnProps[] = [
         {label: '保存', event: 'submit', variant: "contained", className: 'w-1/2'},
@@ -41,12 +42,13 @@ const GoodPage = () => {
     return (
         <>
             <div>
-                <IconButton aria-label="back" onClick={back}>
+                <IconButton aria-label="back" onTouchEnd={back}>
                     <ArrowBackIcon fontSize={'medium'} />
                 </IconButton>
                 <Box>
                     <h3 className={'w-full text-center mb-2'}>添加商品</h3>
                 </Box>
+                <Upload className={'w-20 h-20'}></Upload>
                 <Form register={register} menu={formMenu} columns={formColumns}></Form>
             </div>
         </>

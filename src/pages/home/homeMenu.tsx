@@ -52,7 +52,7 @@ export default function HomeMenu() {
                         icon={action.icon}
                         tooltipTitle={action.name}
                         tooltipOpen
-                        onClick={() => handleClose(action)}
+                        onTouchEnd={() => handleClose(action)}
                     />
                 ))}
             </SpeedDial>

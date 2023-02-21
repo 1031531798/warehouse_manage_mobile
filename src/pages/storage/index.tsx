@@ -19,7 +19,7 @@ const StoragePage = () => {
         <div className={'storage-page flex flex-col flex-grow w-full'}>
             <div className={'grid pb-2'}>
                 <Box className={'flex flex-row items-center justify-around mt-5'}>
-                    <Button variant="contained" startIcon={<AddIcon />} onClick={() => openGoodPage('add')}>添加商品</Button>
+                    <Button variant="contained" startIcon={<AddIcon />} onTouchEnd={() => openGoodPage('add')}>添加商品</Button>
                     <Button variant="contained" startIcon={<AddIcon />}>商品入库</Button>
                 </Box>
             </div>

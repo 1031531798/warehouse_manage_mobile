@@ -25,7 +25,6 @@ export function axiosInterceptors (request: AxiosInstance) {
         return new Promise((resolve, reject) => {
             const {data} = response
             const {code, message} = data
-            console.log(code, response)
             if (code === requestCode.RESULT_CODE_SUCCESS) {
                 resolve(response)
             }else {

@@ -47,7 +47,7 @@ const PageHeader =  () => {
                         color="inherit"
                         aria-label="menu"
                         sx={{ mr: 2 }}
-                        onClick={handleDrawerToggle}
+                        onTouchEnd={handleDrawerToggle}
                     >
                         <MenuIcon />
                     </IconButton>

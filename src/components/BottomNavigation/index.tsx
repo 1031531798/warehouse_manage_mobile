@@ -34,7 +34,7 @@ export default function PageBottomNavigation() {
     }, [router.pathname])
     function renderNavigationAction () {
         return bottoms.map(item => {
-            return <BottomNavigationAction onClick={() => navClick(item)} key={item.path} label={item.label} icon={item.icon} />
+            return <BottomNavigationAction onTouchEnd={() => navClick(item)} key={item.path} label={item.label} icon={item.icon} />
         })
     }
     return (

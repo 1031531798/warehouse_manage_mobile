@@ -30,7 +30,7 @@ export default function PasswordInput (props: PasswordInputProps) {
                     <InputAdornment position="end">
                         <IconButton
                             aria-label="toggle password visibility"
-                            onClick={handleClickShowPassword}
+                            onTouchEnd={handleClickShowPassword}
                             edge="end"
                         >
                             {showPassword ? <Visibility /> : <VisibilityOff />}
