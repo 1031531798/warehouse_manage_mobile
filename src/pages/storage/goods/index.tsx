@@ -16,7 +16,8 @@ const GoodPage = () => {
     const {go} = useGo()
     const {openToast} = useToast()
     function back () {
-        go('/storage')
+        console.log('back')
+        // go('/storage')
     }
     const [register, {submitForm, resetForm}] = useForm()
     function handleSubmit () {
@@ -48,7 +49,7 @@ const GoodPage = () => {
                 <Box>
                     <h3 className={'w-full text-center mb-2'}>添加商品</h3>
                 </Box>
-                <Upload className={'w-20 h-20'}></Upload>
+                <Upload></Upload>
                 <Form register={register} menu={formMenu} columns={formColumns}></Form>
             </div>
         </>
