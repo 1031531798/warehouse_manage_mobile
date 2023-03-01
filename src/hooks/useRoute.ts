@@ -8,8 +8,8 @@ import {useRouter} from "next/router";
  */
 export function getRoutePage (path: string): RouteProp {
     const defaultRoute: RouteProp = {
-        path: '404',
-        name: '路由不存在'
+        path: '',
+        name: ''
     }
     let route: RouteProp = defaultRoute
     let routeList: RouteProp[] = routePage

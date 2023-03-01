@@ -1,4 +1,4 @@
-import {Snackbar, Alert, AlertColor, TextField} from '@mui/material'
+import {TextField} from '@mui/material'
 import {LoadingButton} from '@mui/lab'
 import PasswordInput from "@/components/Input/passwordInput";
 import React, {useState} from "react";
@@ -6,6 +6,9 @@ import {loginUser} from "@/api/login";
 import { useRouter } from 'next/router'
 import useUserStore from "@/store/user";
 import {useToast} from "@/hooks/useToast";
+import Head from "next/head";
+
+
 export default function LoginPage () {
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
@@ -41,6 +44,9 @@ export default function LoginPage () {
     }
     return (
         <>
+            <Head>
+                <title>login</title>
+            </Head>
             <div className="p-6">
                 <h2 className="text-2xl">账号密码登录</h2>
                 <TextField onChange={(e) => setUserName(e.target.value)} sx={{mt: 2}} className={"w-full"} label={"用户名/手机号码"} variant={"outlined"}></TextField>

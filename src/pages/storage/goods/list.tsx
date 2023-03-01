@@ -13,11 +13,13 @@ import SubtitlesIcon from '@mui/icons-material/Subtitles';
 import InputBase from '@mui/material/InputBase';
 import {getGoodsListApi} from "@/api/goods";
 import {useKeyEvent} from "@/hooks/useKeyEvent";
+import {useRouter} from "next/router";
 
 const GoodsList = ({onLoad}: {onLoad: Function}) => {
     const [goodsListData, setGoodsListData] = useState<GoodsProps[]>([])
     const [keyword, setKeyword] = useState<string>('')
     const {enter} = useKeyEvent()
+    const router = useRouter()
     useEffect(() => {
         getList()
         onLoad(getList)
@@ -26,6 +28,9 @@ const GoodsList = ({onLoad}: {onLoad: Function}) => {
         getGoodsListApi({keyword}).then(({data}) => {
             setGoodsListData(data.data)
         })
+    }
+    function openGoodsDetail(row: GoodsProps) {
+        router.push(`/storage/goods/${row.id}`)
     }
 
     // 渲染搜索框
@@ -68,7 +73,7 @@ const GoodsList = ({onLoad}: {onLoad: Function}) => {
     }
     const renderList = useMemo(() => {
         return goodsListData.map(item => {
-            return (<ListItem alignItems="flex-start" key={item.id}>
+            return (<ListItem alignItems="flex-start" key={item.id} onClick={() => openGoodsDetail(item)} >
                 <ListItemAvatar>
                     <Avatar alt={item.goodsName} src={item.goodsImage}/>
                 </ListItemAvatar>

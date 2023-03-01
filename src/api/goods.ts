@@ -22,3 +22,10 @@ export function getGoodsPageApi (params: any) {
 export function getGoodsListApi (data: any) {
     return request({method: 'get',url:'/goods/list', params: data})
 }
+/**
+ *
+ * @description 获取详情
+ */
+export function getGoodsDetailApi (id: any) {
+    return request({method: 'get',url:`/goods/info/${id}`})
+}
