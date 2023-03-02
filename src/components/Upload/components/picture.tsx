@@ -1,8 +1,10 @@
 import PlusIcon from "@/components/Upload/icon/plus.svg";
-import {RefObject, useMemo} from "react";
+import {MutableRefObject, RefObject, useMemo} from "react";
+import Image from "@/components/Image";
+import {JSXElement} from "@babel/types";
 interface PictureUploadProps {
     inputRef: RefObject<HTMLInputElement>
-    fileList: File[]
+    fileList: Map<string, File>
 }
 const Picture = (props: PictureUploadProps) => {
     const {inputRef, fileList} = props
@@ -14,11 +16,13 @@ const Picture = (props: PictureUploadProps) => {
 
     }
     const renderFileList = useMemo(() => {
+        let imageList: JSX.Element[] = []
+        fileList.forEach((item) => {
+            imageList.push(<Image className={boxClass} width={40} height={40} src={window.URL.createObjectURL(item)} alt={item.name} key={item.name} style={{objectFit: 'cover'}} />)
+        })
         return (
             <>
-                {fileList.map((item, index) => {
-                    return (<img className={boxClass} src={window.URL.createObjectURL(item)} alt={item.name} key={index} style={{objectFit: 'cover'}} />)
-                })}
+                {imageList}
             </>
         )
     }, [fileList])

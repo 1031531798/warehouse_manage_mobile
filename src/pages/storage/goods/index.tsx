@@ -17,7 +17,7 @@ const GoodPage = () => {
     const {openToast} = useToast()
     function back () {
         console.log('back')
-        // go('/storage')
+        go('/storage')
     }
     const [register, {submitForm, resetForm}] = useForm()
     function handleSubmit () {
