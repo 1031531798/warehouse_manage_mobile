@@ -3,6 +3,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { FormProps} from "@/components/Form/type";
 import {defaultFormOption, defaultItemOption} from "@/components/Form/utils";
 import {useEffect, useRef, useState} from "react";
+import FormComponentCustom from "@/components/Form/components/custom";
 
 
 const Form = (props: FormProps) => {
@@ -10,17 +11,21 @@ const Form = (props: FormProps) => {
     const [columns] = useState(defaultItemOption(props.columns))
     const [formData, setFormData] = useState({})
     const formRef = useRef<HTMLFormElement>()
+
     const renderFormCell = () => {
         return columns.map(col => {
-            return <Grid key={col.id} xs={col.xs} sm={col.sm} md={col.md}>
-                <TextField
-                    {...col}
-                    required={col.required}
-                    id={col.id}
-                    label={col.label}
-                    className={col.className}
-                />
-            </Grid>
+            const text = <TextField
+                {...col}
+                required={col.required}
+                id={col.id}
+                label={col.label}
+                className={col.className}
+            />
+            return (
+                <Grid  key={col.id} xs={col.xs} sm={col.sm} md={col.md}>
+                    {col.component ? <FormComponentCustom column={col} /> : text}
+                </Grid>
+            )
         })
     }
     // 获取表单数据

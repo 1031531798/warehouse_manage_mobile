@@ -11,6 +11,7 @@ export type FormItemOptions = {
     xs?: number
     sm?: number
     md?: number
+    component?: JSX.Element
 
 } & TextFieldProps
 
