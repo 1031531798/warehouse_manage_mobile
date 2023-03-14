@@ -1,4 +1,4 @@
-import {useRef, useState} from "react";
+import React, {useRef, useState} from "react";
 import {UploadProps} from "@/components/Upload/types";
 import Picture from "@/components/Upload/components/picture";
 import styles from './Upload.module.css'
@@ -36,7 +36,7 @@ export const Upload = (props: UploadProps) => {
     return (
         <div className={props.className}>
             <div className={styles.overUpload}></div>
-            <input ref={inputFile} type={"file"} className={styles.overUploadInput} onChange={fileChange} />
+            <input id={props.id} ref={inputFile} type={"file"} className={styles.overUploadInput} onChange={fileChange} />
             <Picture fileList={fileList} inputRef={inputFile} />
         </div>
     )

@@ -34,10 +34,11 @@ const GoodPage = () => {
         return false
     }
     const formColumns: FormItemOptions[] = [
-        {label: '商品名称', id: 'goodsName', required: true, xs: 12, fullWidth: true},
-        {label: '商品编号', id: 'goodsCode', required: true},
-        {label: '商品价格', id: 'price', type: 'number', InputProps: {endAdornment: <InputAdornment position="start">元</InputAdornment>}},
-        {label: '商品数量', id: 'goodsNum', type:'', InputProps: {endAdornment: <InputAdornment position="start">件</InputAdornment>}},
+        {label: '商品名称', id: 'goodsName', type: 'text', required: true, xs: 24, sm: 12, fullWidth: true},
+        {label: '商品编号', id: 'goodsCode', type: 'text', required: true},
+        {label: '商品价格', id: 'price', type: 'text', props: {type: 'number', InputProps: {endAdornment: <InputAdornment position="start">元</InputAdornment>}} },
+        {label: '商品数量', id: 'goodsNum', type:'text', props: {type: 'number', InputProps: {endAdornment: <InputAdornment position="start">件</InputAdornment>} },},
+        {label: '缩略图', id: 'goodsImage', type: 'upload', xs: 24}
     ]
     const formMenu = <FormBottoms className={'justify-center mt-2 p-2'} onCancel={back} onSubmit={handleSubmit} column={btnColumn}></FormBottoms>
     return (
@@ -49,7 +50,7 @@ const GoodPage = () => {
                 <Box>
                     <h3 className={'w-full text-center mb-2'}>添加商品</h3>
                 </Box>
-                <Upload></Upload>
+
                 <Form register={register} menu={formMenu} columns={formColumns}></Form>
             </div>
         </>

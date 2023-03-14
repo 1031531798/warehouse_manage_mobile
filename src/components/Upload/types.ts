@@ -1,4 +1,5 @@
 export interface UploadProps {
+    id: string;
     action?: string;
     uploadData?: any;
     onlyImage?: boolean;

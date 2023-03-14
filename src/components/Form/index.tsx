@@ -3,7 +3,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { FormProps} from "@/components/Form/type";
 import {defaultFormOption, defaultItemOption} from "@/components/Form/utils";
 import {useEffect, useRef, useState} from "react";
-import FormComponentCustom from "@/components/Form/components/custom";
+import Upload from "@/components/Upload";
 
 
 const Form = (props: FormProps) => {
@@ -11,19 +11,16 @@ const Form = (props: FormProps) => {
     const [columns] = useState(defaultItemOption(props.columns))
     const [formData, setFormData] = useState({})
     const formRef = useRef<HTMLFormElement>()
-
+    const componentsType = {
+        'text': TextField,
+        'upload': Upload
+    }
     const renderFormCell = () => {
         return columns.map(col => {
-            const text = <TextField
-                {...col}
-                required={col.required}
-                id={col.id}
-                label={col.label}
-                className={col.className}
-            />
+            const Cell = col.component || componentsType[col.type]
             return (
-                <Grid  key={col.id} xs={col.xs} sm={col.sm} md={col.md}>
-                    {col.component ? <FormComponentCustom column={col} /> : text}
+                <Grid key={col.id} xs={col.xs} sm={col.sm} md={col.md}>
+                    {<Cell {...col.props} required={col.required} id={col.id} label={col.label} className={'w-full ' + col.className}/>}
                 </Grid>
             )
         })

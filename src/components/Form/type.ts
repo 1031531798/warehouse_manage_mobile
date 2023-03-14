@@ -1,4 +1,5 @@
 import {TextFieldProps} from "@mui/material/TextField/TextField";
+import {FunctionComponent} from "react";
 // 表单配置
 export interface FormProps {
     menu?: JSX.Element
@@ -8,11 +9,13 @@ export interface FormProps {
 }
 // 表单 单列配置
 export type FormItemOptions = {
-    xs?: number
-    sm?: number
-    md?: number
-    component?: JSX.Element
-
+    xs?: 'auto' | number
+    sm?: 'auto' | number
+    md?: 'auto' | number
+    id: string
+    type: 'text' | 'upload'
+    props?: any
+    component?: FunctionComponent
 } & TextFieldProps
 
 export interface FormMethods {
